@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffd0e0">
+<title>For You 💗</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>try{if(localStorage.getItem('lovesite_auth')==='yes')document.documentElement.classList.add('authed')}catch(e){}</script>
+</head>
+<body>
+
+<div id="hearts" aria-hidden="true"></div>
+<div id="confetti" aria-hidden="true"></div>
+
+<!-- ================= LOGIN SCREEN ================= -->
+<div id="login">
+  <!-- Decorative corner polaroids (filled by script.js) -->
+  <div class="login-polaroids" id="loginPolaroids" aria-hidden="true"></div>
+
+  <form class="login-card" id="loginForm" autocomplete="off">
+    <div class="lock">💗</div>
+    <h1>More of Us>/3</h1>
+    <p class="sub">Khwypk & TaeTae KabarGyi</p>
+
+    <div class="field">
+      <span>Username</span>
+      <input id="userInput" type="text" placeholder="Khwypk khaw tk name" autocapitalize="none" spellcheck="false">
+    </div>
+    <div class="field">
+      <span>Password</span>
+      <input id="passInput" type="password" placeholder="Secret pw">
+    </div>
+
+    <button type="submit">Click Me</button>
+    <p class="err" id="err"></p>
+  </form>
+</div>
+
+<!-- ================= MAIN APP ================= -->
+<div id="app">
+  <header class="topbar">
+    <div class="brand">💟<span id="brandName">For You</span></div>
+    <button class="ghost" id="logoutBtn">Log out</button>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-inner">
+        <h1><span id="herName">My Love</span> Ko Chit Tl💕</h1>
+        <p>KhwyPk nk TaeTae a twt khwy pk ly memory ly a phyit lote htr tr🥺</p>
+        <div class="counter">
+          <div class="cbox"><b id="cD">0</b><span>days</span></div>
+          <div class="cbox"><b id="cH">0</b><span>hours</span></div>
+          <div class="cbox"><b id="cM">0</b><span>minutes</span></div>
+          <div class="cbox"><b id="cS">0</b><span>seconds</span></div>
+        </div>
+        <p style="margin-top:14px;font-size:13px" id="sinceLine"></p>
+      </div>
+    </section>
+
+    <!-- TABS -->
+    <nav class="tabs" id="tabs">
+      <button class="tab active" data-target="things">💌 Things I Love abt U>3</button>
+      <button class="tab" data-target="songs">🎵 Songs</button>
+      <button class="tab" data-target="photos">📸 Our Photos</button>
+      <button class="tab" data-target="bucket">✅ To Do List</button>
+      <button class="tab" data-target="notes">💝 Love Notes</button>
+      <button class="tab" data-target="birthday">🎂 Birthday</button>
+    </nav>
+
+    <!-- THINGS -->
+    <section class="panel active" id="things">
+      <h2>Things I love about you</h2>
+      <p class="hint">ta ku chin si click:3</p>
+      <div class="grid" id="reasonGrid"></div>
+    </section>
+
+    <!-- SONGS -->
+    <section class="panel" id="songs">
+      <h2>Songs related to Us</h2>
+      <p class="hint">TaeTaeko ta chin nk pwint pyw htr tr Hee/>3</p>
+
+      <div class="chips" id="playlistTabs"></div>
+
+      <div class="player">
+        <div class="player-top">
+          <div class="cover" id="cover">🎵</div>
+          <div class="now">
+            <div class="songTitle" id="songTitle">Pick a song 💗</div>
+            <div class="songNote" id="songNote"></div>
+          </div>
+        </div>
+
+        <div class="seekRow">
+          <span id="curTime">0:00</span>
+          <input type="range" id="seek" min="0" max="100" value="0" step="0.1" aria-label="Seek">
+          <span id="durTime">0:00</span>
+        </div>
+
+        <div class="controls">
+          <button id="prevBtn" aria-label="Previous">⏮</button>
+          <button id="playBtn" class="play" aria-label="Play">▶</button>
+          <button id="nextBtn" aria-label="Next">⏭</button>
+        </div>
+      </div>
+
+      <div class="songlist" id="songList"></div>
+    </section>
+
+    <!-- PHOTOS -->
+    <section class="panel" id="photos">
+      <h2>Favourite moments with U>\3</h2>
+      <p class="hint">Pone taku chin si ko click kyi❤︎</p>
+      <div class="gallery" id="gallery"></div>
+    </section>
+
+    <!-- BUCKET LIST -->
+    <section class="panel" id="bucket">
+      <h2>Things we'll do together</h2>
+      <p class="hint">Lote Pee yin tick lote</p>
+      <ul class="bucket" id="bucketList"></ul>
+    </section>
+
+    <!-- NOTES -->
+    <section class="panel" id="notes">
+      <h2>TaeTae atwt Note ly twy</h2>
+      <p class="hint">KhwyPk ko lwan tine phat pr dr ly twy🥺</p>
+      <div class="noteBox" id="noteBox"></div>
+      <button class="btn" id="newNote">Click Me!</button>
+    </section>
+
+    <!-- BIRTHDAY -->
+    <section class="panel" id="birthday">
+      <h2>Happy Birthday,Kokoe kalaylay 🎂</h2>
+      <p class="hint" id="bdayHint">counting down to your special day</p>
+
+      <div class="counter bday-counter">
+        <div class="cbox"><b id="bD">0</b><span>days</span></div>
+        <div class="cbox"><b id="bH">0</b><span>hours</span></div>
+        <div class="cbox"><b id="bM">0</b><span>minutes</span></div>
+        <div class="cbox"><b id="bS">0</b><span>seconds</span></div>
+      </div>
+
+      <div class="cake-wrap">
+        <div class="cake">
+          <div class="candles" id="candles"></div>
+          <div class="layer top"></div>
+          <div class="layer mid"></div>
+          <div class="layer bottom"></div>
+          <div class="plate"></div>
+        </div>
+        <p class="cake-hint" id="cakeHint">Tap each candle to blow it out 🕯️</p>
+        <button class="relight" id="relightBtn" style="display:none">Light them again 🕯️</button>
+      </div>
+
+      <div class="bday-card">
+        <p id="bdayMsg"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>Made with 💗, just for you.</footer>
+</div>
+
+<!-- ================= LIGHTBOX ================= -->
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">‹</button>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next">›</button>
+
+  <div class="lb-content">
+    <figure class="lb-figure">
+      <img id="lbImg" src="" alt="">
+      <figcaption id="lbCaption"></figcaption>
+    </figure>
+    <p class="lb-love" id="lbLove"></p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
