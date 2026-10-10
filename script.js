@@ -250,10 +250,7 @@
   // Build login polaroids on page load
   buildLoginPolaroids();
 
-  // Auto-login if already authenticated
-  try {
-    if (localStorage.getItem('lovesite_auth') === 'yes') enterApp();
-  } catch(e){}
+
 
   /* ==========================================================
      5. FLOATING HEARTS
@@ -758,5 +755,9 @@
       setTimeout(() => p.remove(), 5000);
     }
   }
+// Auto-login if already authenticated
+  try {
+    if (localStorage.getItem('lovesite_auth') === 'yes') enterApp();
+  } catch(e){ console.error('Auto-login error:', e); }
 
 })();
